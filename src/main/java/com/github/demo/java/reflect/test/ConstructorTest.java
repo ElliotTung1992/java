@@ -1,6 +1,6 @@
-package com.github.demo.reflect.test;
+package com.github.demo.java.reflect.test;
 
-import com.github.demo.reflect.demo.Student;
+import com.github.demo.java.reflect.demo.Student;
 
 import java.lang.reflect.Constructor;
 import java.util.Arrays;

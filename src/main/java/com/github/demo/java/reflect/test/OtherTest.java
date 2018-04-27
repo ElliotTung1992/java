@@ -1,4 +1,4 @@
-package com.github.demo.reflect.test;
+package com.github.demo.java.reflect.test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

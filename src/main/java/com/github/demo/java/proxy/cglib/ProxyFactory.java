@@ -1,4 +1,4 @@
-package com.github.demo.proxy.cglib;
+package com.github.demo.java.proxy.cglib;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

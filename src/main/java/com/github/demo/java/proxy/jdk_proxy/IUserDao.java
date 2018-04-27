@@ -1,4 +1,4 @@
-package com.github.demo.proxy.jdk_proxy;
+package com.github.demo.java.proxy.jdk_proxy;
 
 public interface IUserDao {
 

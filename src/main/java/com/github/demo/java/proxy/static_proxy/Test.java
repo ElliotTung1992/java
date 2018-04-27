@@ -1,4 +1,4 @@
-package com.github.demo.proxy.static_proxy;
+package com.github.demo.java.proxy.static_proxy;
 
 public class Test {
 

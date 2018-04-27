@@ -1,4 +1,4 @@
-package com.github.demo.proxy.cglib;
+package com.github.demo.java.proxy.cglib;
 
 public class UserDao {
 

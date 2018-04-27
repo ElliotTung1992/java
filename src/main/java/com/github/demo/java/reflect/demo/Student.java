@@ -1,4 +1,4 @@
-package com.github.demo.reflect.demo;
+package com.github.demo.java.reflect.demo;
 
 public class Student {
 
