@@ -1,8 +1,11 @@
 package com.github.demo.java8.datetime;
 
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * LocalDateTime API
@@ -25,5 +28,26 @@ public class Test3 {
         System.out.println(now.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
 
         System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
+
+
+        //获取UAT时间    毫秒
+        LocalDateTime of = LocalDateTime.of(2018, 8, 5, 0, 0, 0);
+        System.out.println(of.toInstant(ZoneOffset.of("+7")).toEpochMilli());
+
+        TimeZone timeZone = TimeZone.getTimeZone("Asia/Shanghai");
+
+        long l = ZonedDateTime.of(of, ZoneId.of("Asia/Shanghai")).toEpochSecond();
+        System.out.println(l);
+
+
+        Date date = new Date();
+        Calendar cal =
+                Calendar.getInstance(TimeZone.getDefault());
+        cal.setTime(date);
+        long time = date.getTime() + cal.getTimeZone().getRawOffset();
+        System.out.println(time);
+
+        Long milliSecond = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
+        System.out.println(milliSecond);
     }
 }

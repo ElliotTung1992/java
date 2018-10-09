@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * LocalDate API 熟悉
@@ -95,5 +96,12 @@ public class Test1 {
 
         //1970-01-01往后推几天
         System.out.println(LocalDate.ofEpochDay(30));
+
+        //获取本月第一天
+        LocalDate firstLocalDate = LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+        System.out.println(firstLocalDate);
+
+        LocalDate lastLocalDate = LocalDate.now().with(TemporalAdjusters.lastDayOfMonth());
+        System.out.println(lastLocalDate);
     }
 }

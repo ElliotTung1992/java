@@ -10,7 +10,7 @@ public class Java8Test3 {
     public static void main(String[] args) {
 
         //for 循环的麻烦
-//        test1();
+        test1();
 
         //可变变量与参数
 //        test2();
@@ -22,7 +22,7 @@ public class Java8Test3 {
 //        test4();
 
         //逆向迭代
-        test5();
+//        test5();
     }
 
     private static void test5() {
