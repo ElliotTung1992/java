@@ -2,11 +2,10 @@ package com.github.demo.java.jdbc.part1;
 
 import java.sql.*;
 
-public class JdbcTest {
+public class MyJDBCTemplate {
 
-    public static void main(String[] args) {
+    public <T> T execute(MyStatementCallback<T> action) {
 
-        String sql;
         String url = "jdbc:mysql://localhost:3306/guns";
         String userName = "root";
         String password = "123456";
@@ -14,6 +13,7 @@ public class JdbcTest {
         Connection conn = null;
         Statement statement = null;
 
+        Object obj = null;
         try {
             //注册驱动
             Class.forName("com.mysql.jdbc.Driver");
@@ -24,23 +24,11 @@ public class JdbcTest {
             //创建可以执行sql的Statement
             statement = conn.createStatement();
 
-            sql = "select * from sys_user";
-
             //执行sql获取返回结果
-            ResultSet resultSet = statement.executeQuery(sql);
+            T resultSet = action.doInStatement(statement);
 
-            //处理返回结果
-            while (resultSet.next()){
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                int sex = resultSet.getInt("sex");
-                System.out.println(id);
-                System.out.println(name);
-                System.out.println(sex);
-            }
-
+            obj = resultSet;
             //释放资源
-            resultSet.close();
             statement.close();
             conn.close();
         } catch (ClassNotFoundException e) {
@@ -64,6 +52,6 @@ public class JdbcTest {
                 }
             }
         }
-
+        return (T) obj;
     }
 }
