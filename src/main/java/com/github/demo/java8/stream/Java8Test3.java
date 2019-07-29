@@ -1,4 +1,4 @@
-package com.github.demo.java8;
+package com.github.demo.java8.stream;
 
 import java.util.stream.IntStream;
 
