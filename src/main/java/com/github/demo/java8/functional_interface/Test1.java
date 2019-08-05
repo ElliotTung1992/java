@@ -1,9 +1,7 @@
 package com.github.demo.java8.functional_interface;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.SplittableRandom;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
