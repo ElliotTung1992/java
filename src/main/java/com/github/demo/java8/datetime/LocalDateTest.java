@@ -1,5 +1,6 @@
 package com.github.demo.java8.datetime;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -20,6 +21,8 @@ public class LocalDateTest {
         System.out.println("获取当前日子:" + now.getDayOfMonth());
         System.out.println("获取今天是周几:" + now.getDayOfWeek());
         System.out.println("获取今天是今年的第几日:" + now.getDayOfYear());
+
+        System.out.println("获取当前周的周一:" + now.with(DayOfWeek.MONDAY));
 
         System.out.println("获取当前日期的开始时间:" + now.atStartOfDay());
         System.out.println("获取当前日期的开始时间加上时区:" + now.atStartOfDay(ZoneId.of(ZoneId.SHORT_IDS.get("CTT"))));

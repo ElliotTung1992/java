@@ -10,7 +10,7 @@ import java.util.TimeZone;
 /**
  * LocalDateTime API
  */
-public class Test3 {
+public class FormatTest {
 
     public static void main(String[] args) {
         //获取当前日期时间

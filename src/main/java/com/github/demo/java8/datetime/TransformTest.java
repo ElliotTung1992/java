@@ -4,7 +4,7 @@ import java.time.*;
 import java.util.Date;
 
 //日期对象之间转换
-public class Test2 {
+public class TransformTest {
 
     public static void main(String[] args) {
         //localDate -> Date
