@@ -4,6 +4,7 @@ import com.github.demo.domain.Bar;
 import com.github.demo.domain.Foo;
 import com.github.demo.domain.User;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
 import java.util.function.Supplier;
@@ -52,7 +53,15 @@ public class StreamTest {
         //test6();
         //test7();
         //test8();
-        test9();
+        //test9();
+        test10();
+    }
+
+    private static void test10() {
+        BigDecimal a = new BigDecimal(0);
+        BigDecimal b = new BigDecimal(1);
+        int i = a.compareTo(b);
+        System.out.println(i);
     }
 
     private static void test9() {

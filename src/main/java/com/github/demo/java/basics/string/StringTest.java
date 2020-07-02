@@ -32,5 +32,9 @@ public class StringTest {
         System.out.println("s1 == s3:" + (s1 == s3));
         System.out.println("s2 == s3:" + (s2 == s3));
 
+
+        String str = "提单号:COSU6258116820G,COSU6258116820A,COSU6258116820,COSU6258116820E,COSU6258116820H,COSU6258116820C,COSU6258116820B,COSU6258116820F,COSU6258116820D\r\n船名航次:EVER LUNAR/0461-033E 开航日期:2020-03-09";
+        System.out.println(str.length());
+
     }
 }

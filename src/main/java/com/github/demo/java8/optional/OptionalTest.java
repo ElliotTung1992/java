@@ -26,7 +26,7 @@ public class OptionalTest {
         //test9();
         //test10();
         //test11();
-        //test12();
+        test12();
     }
 
     /**
@@ -36,7 +36,7 @@ public class OptionalTest {
      * @desc orElseThrow()Api
      **/
     private static void test12() {
-        Integer age = 11;
+        Integer age = null;
         Optional<Integer> optional = Optional.ofNullable(age);
         Integer integer = optional.orElseThrow();
         System.out.println(integer);

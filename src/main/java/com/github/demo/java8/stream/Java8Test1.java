@@ -1,9 +1,6 @@
 package com.github.demo.java8.stream;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Java 中的一种更轻松的函数式编程途径
@@ -18,7 +15,25 @@ public class Java8Test1 {
 //        test2();
 
         //函数式编程
-        test3();
+//        test3();
+
+        sort();
+    }
+
+    private static void sort() {
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(3);
+        list.add(33);
+        list.add(24);
+
+        list.stream().sorted(Comparator.reverseOrder()).forEach(e -> {
+            System.out.println(e);
+        });
+
+        list.stream().sorted().forEach(e -> {
+            System.out.println(e);
+        });
     }
 
     private static void test3() {

@@ -9,8 +9,7 @@ public class Test3 {
     }
 
     public static void m1(String s, String... ss) {
-        for (int i = 0; i < ss.length; i++) {
-            System.out.println(ss[i]);
-        }
+        int aaa = "aaa,bbb,ccc".indexOf("bbb");
+        System.out.println(aaa);
     }
 }

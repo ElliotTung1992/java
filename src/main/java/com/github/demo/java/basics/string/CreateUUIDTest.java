@@ -12,5 +12,7 @@ public class CreateUUIDTest {
     public static void main(String[] args) {
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         System.out.println(uuid);
+
+
     }
 }
