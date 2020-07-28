@@ -8,4 +8,6 @@ package com.github.demo.designPattern.proxy.simple_demo;
 public interface Flyable {
 
     void fly();
+
+    void fly2();
 }

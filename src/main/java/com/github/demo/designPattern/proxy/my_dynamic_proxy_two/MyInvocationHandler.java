@@ -1,4 +1,4 @@
-package com.github.demo.designPattern.proxy.self_dynamic_proxy;
+package com.github.demo.designPattern.proxy.my_dynamic_proxy_two;
 
 import com.github.demo.designPattern.proxy.simple_demo.Bird;
 

@@ -1,4 +1,4 @@
-package com.github.demo.designPattern.proxy.self_dynamic_proxy;
+package com.github.demo.designPattern.proxy.my_dynamic_proxy_two;
 
 import com.github.demo.designPattern.proxy.simple_demo.Bird;
 import com.github.demo.designPattern.proxy.simple_demo.Flyable;
@@ -24,51 +24,6 @@ public class Proxy {
     public static String projectPath = "/Users/apple/Documents/workspace/github/java/src/main/java";
 
     public static Object newProxyInstance(Class inf, InvocationHandler handler) throws Exception {
-        /*TypeSpec.Builder typeSpecBuilder = TypeSpec.classBuilder("TimeProxy")
-                .addSuperinterface(inf);
-
-        FieldSpec fieldSpec = FieldSpec.builder(inf, "flyable", Modifier.PRIVATE).build();
-        typeSpecBuilder.addField(fieldSpec);
-
-        MethodSpec constructorMethodSpec = MethodSpec.constructorBuilder()
-                .addModifiers(Modifier.PUBLIC)
-                .addParameter(inf, "flyable")
-                .addStatement("this.flyable = flyable")
-                .build();
-        typeSpecBuilder.addMethod(constructorMethodSpec);
-
-        Method[] methods = inf.getDeclaredMethods();
-        for (Method method : methods) {
-            MethodSpec methodSpec = MethodSpec.methodBuilder(method.getName())
-                    .addModifiers(Modifier.PUBLIC)
-                    .addAnnotation(Override.class)
-                    .returns(method.getReturnType())
-                    .addStatement("long start = $T.currentTimeMillis()", System.class)
-                    .addCode("\n")
-                    .addStatement("this.flyable." + method.getName() + "()")
-                    .addCode("\n")
-                    .addStatement("long end = $T.currentTimeMillis()", System.class)
-                    .addStatement("$T.out.println(\"Fly Time =\" + (end - start))", System.class)
-                    .build();
-            typeSpecBuilder.addMethod(methodSpec);
-        }
-
-        JavaFile javaFile = JavaFile.builder("com.github.demo.designPattern.proxy.self_dynamic_proxy", typeSpecBuilder.build()).build();
-        // 为了看的更清楚，我将源码文件生成到桌面
-        javaFile.writeTo(new File(projectPath));
-
-        // 编译
-        JavaCompiler.compile(new File(projectPath + "/com/github/demo/designPattern/proxy/self_dynamic_proxy/TimeProxy.java"));
-
-        Proxy.newProxyInstance(Flyable.class);
-        URL[] urls = new URL[] {new URL("file:/" + projectPath)};
-        URLClassLoader classLoader = new URLClassLoader(urls);
-        Class clazz = classLoader.loadClass("com.github.demo.designPattern.proxy.self_dynamic_proxy.TimeProxy");
-        Constructor constructor = clazz.getConstructor(Flyable.class);
-        Flyable flyable = (Flyable) constructor.newInstance(new Bird());
-        flyable.fly();
-        */
-
         TypeSpec.Builder typeSpecBuilder = TypeSpec.classBuilder("TimeProxy")
                 .addModifiers(Modifier.PUBLIC)
                 .addSuperinterface(inf);
@@ -101,16 +56,16 @@ public class Proxy {
             typeSpecBuilder.addMethod(methodSpec);
         }
 
-        JavaFile javaFile = JavaFile.builder("com.github.demo.designPattern.proxy.self_dynamic_proxy", typeSpecBuilder.build()).build();
+        JavaFile javaFile = JavaFile.builder("com.github.demo.designPattern.proxy.my_dynamic_proxy_two", typeSpecBuilder.build()).build();
         // 为了看的更清楚，我将源码文件生成到桌面
         javaFile.writeTo(new File(projectPath));
 
         // 编译
-        JavaCompiler.compile(new File(projectPath + "/com/github/demo/designPattern/proxy/self_dynamic_proxy/TimeProxy.java"));
+        JavaCompiler.compile(new File(projectPath + "/com/github/demo/designPattern/proxy/my_dynamic_proxy_two/TimeProxy.java"));
 
         URL[] urls = new URL[] {new URL("file:/" + projectPath)};
         URLClassLoader classLoader = new URLClassLoader(urls);
-        Class clazz = classLoader.loadClass("com.github.demo.designPattern.proxy.self_dynamic_proxy.TimeProxy");
+        Class clazz = classLoader.loadClass("com.github.demo.designPattern.proxy.my_dynamic_proxy_two.TimeProxy");
         Constructor constructor = clazz.getConstructor(InvocationHandler.class);
         Object obj = constructor.newInstance(handler);
         return obj;

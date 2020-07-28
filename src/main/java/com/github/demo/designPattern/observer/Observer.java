@@ -1,11 +1,11 @@
 package com.github.demo.designPattern.observer;
 
 /**
- * @author 小眼睛带鱼
- * @date 2019-12-11 17:54
+ * @author 董感恩
+ * @date 2020-07-21 10:38
  * @desc 观察者
  */
-public abstract class Observer {
-    protected Subject subject;
-    public abstract void update();
+public interface Observer {
+
+    void update(Subject subject, Object arg);
 }

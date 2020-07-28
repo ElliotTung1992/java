@@ -19,4 +19,9 @@ public class TimeFly implements Flyable{
         flyable.fly();
         System.out.println("总共消耗:" + (System.currentTimeMillis() - start));
     }
+
+    @Override
+    public void fly2() {
+
+    }
 }

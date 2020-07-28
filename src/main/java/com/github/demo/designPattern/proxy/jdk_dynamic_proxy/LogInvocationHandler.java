@@ -1,4 +1,4 @@
-package com.github.demo.designPattern.proxy.dynamic_proxy;
+package com.github.demo.designPattern.proxy.jdk_dynamic_proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

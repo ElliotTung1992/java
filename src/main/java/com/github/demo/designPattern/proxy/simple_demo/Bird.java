@@ -18,4 +18,9 @@ public class Bird implements Flyable{
         }
         System.out.println("鸟儿飞啊飞...");
     }
+
+    @Override
+    public void fly2() {
+        System.out.println("鸟儿飞啊飞2...");
+    }
 }

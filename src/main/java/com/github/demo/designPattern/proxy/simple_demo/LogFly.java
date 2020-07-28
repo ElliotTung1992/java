@@ -19,4 +19,9 @@ public class LogFly implements Flyable{
         flyable.fly();
         System.out.println("结束记录日志");
     }
+
+    @Override
+    public void fly2() {
+
+    }
 }

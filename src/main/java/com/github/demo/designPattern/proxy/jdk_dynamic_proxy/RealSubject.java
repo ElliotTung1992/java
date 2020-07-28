@@ -1,4 +1,4 @@
-package com.github.demo.designPattern.proxy.dynamic_proxy;
+package com.github.demo.designPattern.proxy.jdk_dynamic_proxy;
 
 public class RealSubject implements Subject{
 

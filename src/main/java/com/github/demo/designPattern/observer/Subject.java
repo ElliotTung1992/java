@@ -1,36 +1,27 @@
 package com.github.demo.designPattern.observer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 /**
- * @author 小眼睛带鱼
- * @date 2019-12-11 17:55
+ * @author 董感恩
+ * @date 2020-07-21 10:38
  * @desc 主题
  */
-public class Subject {
+public abstract class Subject {
 
-    private String message;
-    private List<Observer> observers = new ArrayList<>();
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setState(String message) {
-        this.message = message;
-        notifyAllObserver();
-    }
+    private Vector<Observer> vector = new Vector<>();
 
     public void attach(Observer observer){
-        observers.add(observer);
+        vector.add(observer);
     }
 
     public void detach(Observer observer){
-        observers.remove(observer);
+        vector.remove(observer);
     }
 
-    public void notifyAllObserver(){
-        observers.stream().forEach(e -> e.update());
+    public void notifyObserver(Object arg){
+        for (Observer observer:vector) {
+            observer.update(this, arg);
+        }
     }
 }
