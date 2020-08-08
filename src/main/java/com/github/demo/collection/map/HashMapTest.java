@@ -1,4 +1,4 @@
-package com.github.demo.basic.map;
+package com.github.demo.collection.map;
 
 /**
  * @author 董感恩
