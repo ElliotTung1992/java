@@ -36,10 +36,10 @@ public class OptionalTest {
      * @desc orElseThrow()Api
      **/
     private static void test12() {
-        Integer age = null;
+        /*Integer age = null;
         Optional<Integer> optional = Optional.ofNullable(age);
         Integer integer = optional.orElseThrow();
-        System.out.println(integer);
+        System.out.println(integer);*/
     }
 
     /**
@@ -51,7 +51,7 @@ public class OptionalTest {
     private static void test11() {
         Integer age = 11;
         Optional<Integer> optional = Optional.ofNullable(age);
-        optional.ifPresentOrElse(e -> System.out.println(e), () -> System.out.println("这是一个空值！！"));
+        //optional.ifPresentOrElse(e -> System.out.println(e), () -> System.out.println("这是一个空值！！"));
     }
 
     /**
@@ -63,9 +63,9 @@ public class OptionalTest {
     private static void test10() {
 //        Optional<Integer> optional = Optional.of(null);
 //        Optional<Integer> optional = Optional.empty();
-        Optional<Integer> optional = Optional.of(12);
-        Optional<Integer> or = optional.or(() -> Optional.of(100));
-        System.out.println(or.get());
+//        Optional<Integer> optional = Optional.of(12);
+//        Optional<Integer> or = optional.or(() -> Optional.of(100));
+//        System.out.println(or.get());
     }
 
     /**
