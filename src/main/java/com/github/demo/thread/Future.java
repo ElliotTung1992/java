@@ -1,4 +1,4 @@
-package com.github.demo.multiThreading;
+package com.github.demo.thread;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -11,8 +11,8 @@ import java.util.concurrent.FutureTask;
 public class Future {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        //testOne();
-        testTwo();
+        testOne();
+        //testTwo();
     }
 
     private static void testTwo() {

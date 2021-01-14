@@ -1,7 +1,11 @@
-package com.github.demo.multiThreading;
+package com.github.demo.thread;
 
 
+import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -20,9 +24,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  *  2.线程池的好处
  *    2.1 - 降低资源消耗
  *    2.2 - 提高响应速度
- *    2.3 - 提高线程的可管理型
- *    2.4 - 提供更多更强大的功能
- *
+ *  *    2.3 - 提高线程的可管理型
+ *  *    2.4 - 提供更多更强大的功能
+ *  *
  *  3.线程池思想
  *    3.1 - 为了解决资源分配问题，线程池采用了池化的思想
  *          池化，顾名思义，是为了最大收益并最小风险
@@ -69,10 +73,137 @@ public class ThreadPoolExecutorTest {
     private static final int TIDYING    =  2 << COUNT_BITS;
     private static final int TERMINATED =  3 << COUNT_BITS;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
         //threadPoolExecutorLifeCycle();
         //test();
-        useCase();
+        //useCase();
+        //test2();
+        //test3();
+
+        test4();
+
+        //test5();
+    }
+
+    private static void test5() throws ExecutionException, InterruptedException {
+        Callable<String> callable = new Callable<String>() {
+            public String call() throws Exception {
+                System.out.println("This is ThreadPoolExetor#submit(Callable<T> task) method.");
+                return "result";
+            }
+        };
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<String> future = executor.submit(callable);
+        System.out.println(future.get());
+    }
+
+    private static void test4() throws ExecutionException, InterruptedException {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(6, Integer.MAX_VALUE,
+                60L, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new ThreadPoolExecutor.AbortPolicy());
+
+        Callable<Integer> callable = () -> {
+            return 1;
+        };
+
+        Future<?> future = threadPoolExecutor.submit(callable);
+
+        Object o = future.get();
+
+        System.out.println(o);
+    }
+
+    private static void test3() throws ExecutionException, InterruptedException {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(6, Integer.MAX_VALUE,
+                60L, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new ThreadPoolExecutor.AbortPolicy());
+
+        Runnable runnable = () -> {
+            System.out.println("haha");
+        };
+
+        threadPoolExecutor.execute(runnable);
+    }
+
+    private static void test2() {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(6, Integer.MAX_VALUE,
+                60L, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new ThreadPoolExecutor.AbortPolicy());
+
+        long beginTime = System.nanoTime();
+
+        FutureTask<Object> futureTask = new FutureTask<>(() -> {
+            methodOne();
+            return true;
+        });
+
+        Callable callableTwo = () -> {
+            methodTwo();
+            return true;
+        };
+
+        Callable callableThree = () -> {
+            methodThree();
+            return true;
+        };
+
+        Future futureOne = threadPoolExecutor.submit(futureTask);
+        Future futureTwo = threadPoolExecutor.submit(callableTwo);
+        Future submitThree = threadPoolExecutor.submit(callableThree);
+
+        try {
+            while (true){
+                Boolean bTwo = (Boolean) futureTwo.get(6, TimeUnit.SECONDS);
+                System.out.println(bTwo);
+                if(bTwo){
+                    break;
+                }
+                Boolean bThree = (Boolean) submitThree.get(6, TimeUnit.SECONDS);
+                System.out.println(bThree);
+                Boolean bOne = (Boolean) futureOne.get(11, TimeUnit.SECONDS);
+                System.out.println(bOne);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+        long endTime = System.nanoTime() - beginTime;
+        System.out.println(endTime);
+    }
+
+    public static void methodOne(){
+        System.out.println("methodOne");
+        try {
+            Thread.sleep(10 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void methodTwo(){
+        System.out.println("methodTwo");
+        try {
+            Thread.sleep(5 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void methodThree(){
+        System.out.println("methodThree");
+        try {
+            Thread.sleep(5 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
